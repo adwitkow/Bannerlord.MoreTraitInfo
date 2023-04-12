@@ -1,0 +1,50 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.5.33414.496
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Bannerlord.MoreTraitInfo", "Bannerlord.MoreTraitInfo\Bannerlord.MoreTraitInfo.csproj", "{9A50698B-116B-4FB5-82EE-C7D13A5B41DD}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".github", ".github", "{D1461DB9-27FC-4654-99EF-7CF7E3FA2384}"
+	ProjectSection(SolutionItems) = preProject
+		.github\dependabot.yml = .github\dependabot.yml
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "workflows", "workflows", "{EC55F9C3-964A-4360-BD10-CFCB0C1B3F98}"
+	ProjectSection(SolutionItems) = preProject
+		.github\workflows\build.yml = .github\workflows\build.yml
+		.github\workflows\publish.yml = .github\workflows\publish.yml
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "build", "build", "{B9E25705-8267-40E8-9EFA-B1CD45CCA848}"
+	ProjectSection(SolutionItems) = preProject
+		build\common.props = build\common.props
+		build\common.targets = build\common.targets
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{3CFFB69E-17B5-4632-BFB8-07873BF78747}"
+	ProjectSection(SolutionItems) = preProject
+		supported-game-versions.txt = supported-game-versions.txt
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|x64 = Debug|x64
+		Release|x64 = Release|x64
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{9A50698B-116B-4FB5-82EE-C7D13A5B41DD}.Debug|x64.ActiveCfg = Beta_Debug|x64
+		{9A50698B-116B-4FB5-82EE-C7D13A5B41DD}.Debug|x64.Build.0 = Beta_Debug|x64
+		{9A50698B-116B-4FB5-82EE-C7D13A5B41DD}.Release|x64.ActiveCfg = Release|x64
+		{9A50698B-116B-4FB5-82EE-C7D13A5B41DD}.Release|x64.Build.0 = Release|x64
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{EC55F9C3-964A-4360-BD10-CFCB0C1B3F98} = {D1461DB9-27FC-4654-99EF-7CF7E3FA2384}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {66C66F34-C217-4E07-897D-22F7A756C098}
+	EndGlobalSection
+EndGlobal
