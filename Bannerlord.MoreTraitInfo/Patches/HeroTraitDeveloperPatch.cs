@@ -15,6 +15,11 @@ namespace Bannerlord.MoreTraitInfo.Patches
 
         public static void AddTraitXpPrefix(TraitObject trait, int xpAmount)
         {
+            if (xpAmount == 0)
+            {
+                return;
+            }
+
             var @operator = xpAmount > 0 ? '+' : '-';
             var rawValue = MathF.Abs(xpAmount);
             var color = xpAmount > 0 ? Colors.Green : Colors.Red;
