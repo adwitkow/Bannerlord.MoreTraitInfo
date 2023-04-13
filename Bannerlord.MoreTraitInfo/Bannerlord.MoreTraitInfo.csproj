@@ -33,6 +33,7 @@
     </PackageReference>
     <PackageReference Include="Bannerlord.ModuleLoader.Injector" Version="$(BUTRModuleLoaderVersion)" />
     <PackageReference Include="Bannerlord.ModuleManager.Source" Version="$(BUTRModuleManagerVersion)" />
+    <PackageReference Include="Bannerlord.UIExtenderEx" Version="$(UIExtenderExVersion)" IncludeAssets="compile" />
 
     <!-- ReferenceAssemblies -->
     <PackageReference Include="Bannerlord.ReferenceAssemblies.Core" Version="$(GameVersion).*-*" PrivateAssets="All" />
@@ -51,6 +52,11 @@
       <Regex>\$mcmversion\$</Regex>
       <Replacement>$(MCMVersion)</Replacement>
     </SubModuleOverrides>
+  </ItemGroup>
+  <ItemGroup>
+    <None Update="_Module\GUI\Prefabs\TraitsPrefab.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
 
 </Project>
