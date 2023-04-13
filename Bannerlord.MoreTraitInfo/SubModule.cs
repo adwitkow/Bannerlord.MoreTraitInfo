@@ -10,8 +10,8 @@ namespace Bannerlord.MoreTraitInfo
         {
             var harmony = new Harmony(typeof(SubModule).Namespace);
 
-            CampaignUIHelperPatch.Apply(harmony);
             HeroTraitDeveloperPatch.Apply(harmony);
+            harmony.PatchAll();
 
             base.OnSubModuleLoad();
         }
