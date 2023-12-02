@@ -13,7 +13,7 @@ namespace Bannerlord.MoreTraitInfo
         {
             var harmony = new Harmony(Namespace);
 
-            HeroTraitDeveloperPatch.Apply(harmony);
+            TraitLevelingHelperPatch.Apply(harmony);
             harmony.PatchAll();
 
             var uiExtender = new UIExtender(Namespace);
