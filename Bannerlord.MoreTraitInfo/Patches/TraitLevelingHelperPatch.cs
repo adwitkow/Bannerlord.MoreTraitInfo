@@ -40,10 +40,21 @@ namespace Bannerlord.MoreTraitInfo.Patches
             TraitObject trait,
             int xpValue)
         {
-            var @operator = xpValue < 0 ? '-' : '+';
+            char sign;
+            Color color;
+            if (xpValue < 0)
+            {
+                sign = '-';
+                color = Colors.Red;
+            }
+            else
+            {
+                sign = '+';
+                color = Colors.Green;
+            }
+
             var rawValue = MathF.Abs(xpValue);
-            var color = xpValue > 0 ? Colors.Green : Colors.Red;
-            var message = new InformationMessage($"{Context}: {@operator}{rawValue} {trait.Name}", color);
+            var message = new InformationMessage($"{Context}: {sign}{rawValue} {trait.Name}", color);
 
             InformationManager.DisplayMessage(message);
         }
