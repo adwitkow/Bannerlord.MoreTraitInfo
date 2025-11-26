@@ -27,7 +27,7 @@
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
-    <PackageReference Include="Lib.Harmony" Version="2.4.1" IncludeAssets="compile" />
+    <PackageReference Include="Lib.Harmony" Version="2.4.2" IncludeAssets="compile" />
     <PackageReference Include="Harmony.Extensions" Version="$(HarmonyExtensionsVersion)">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
