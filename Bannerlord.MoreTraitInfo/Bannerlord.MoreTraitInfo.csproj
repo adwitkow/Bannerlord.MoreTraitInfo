@@ -6,7 +6,6 @@
 
   <!-- NuGet Packages -->
   <ItemGroup>
-    <PackageReference Include="Humanizer.Core" Version="2.14.1" />
     <PackageReference Include="Lib.Harmony" Version="2.4.2" IncludeAssets="compile" />
     <PackageReference Include="Harmony.Extensions" Version="3.2.0.77">
       <PrivateAssets>all</PrivateAssets>

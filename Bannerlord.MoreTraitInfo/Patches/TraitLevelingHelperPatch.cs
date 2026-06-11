@@ -1,10 +1,10 @@
-﻿using HarmonyLib.BUTR.Extensions;
-using HarmonyLib;
+﻿using HarmonyLib;
+using HarmonyLib.BUTR.Extensions;
+using System.Linq;
+using System.Reflection;
+using System.Text.RegularExpressions;
 using TaleWorlds.CampaignSystem.CharacterDevelopment;
 using TaleWorlds.Library;
-using Humanizer;
-using System.Reflection;
-using System.Linq;
 
 namespace Bannerlord.MoreTraitInfo.Patches
 {
@@ -31,9 +31,8 @@ namespace Bannerlord.MoreTraitInfo.Patches
 
         public static void ContextPrefix(MethodBase __originalMethod)
         {
-            Context = __originalMethod.Name
-                .Substring(2)
-                .Humanize(LetterCasing.Title);
+            Context = SpaceBeforeUppercase(__originalMethod.Name
+                .Substring(2));
         }
 
         public static void AddPlayerTraitXPAndLogEntryPostfix(
@@ -57,6 +56,16 @@ namespace Bannerlord.MoreTraitInfo.Patches
             var message = new InformationMessage($"{Context}: {sign}{rawValue} {trait.Name}", color);
 
             InformationManager.DisplayMessage(message);
+        }
+
+        private static string SpaceBeforeUppercase(string value)
+        {
+            if (string.IsNullOrWhiteSpace(value))
+            {
+                return value;
+            }
+
+            return Regex.Replace(value, "(?<!^)([A-Z])", " $1");
         }
     }
 }
