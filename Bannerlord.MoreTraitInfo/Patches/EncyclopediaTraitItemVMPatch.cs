@@ -1,6 +1,10 @@
 ﻿using HarmonyLib;
 using HarmonyLib.PatchBuilder;
+#if LOWER_THAN_1_5
+using System.Text;
+#else
 using System.Collections.Generic;
+#endif
 using TaleWorlds.CampaignSystem;
 using TaleWorlds.CampaignSystem.CharacterDevelopment;
 using TaleWorlds.CampaignSystem.ViewModelCollection;
