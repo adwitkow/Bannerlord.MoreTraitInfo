@@ -14,9 +14,9 @@ namespace Bannerlord.MoreTraitInfo
             var harmony = new Harmony(Namespace);
 
             TraitLevelingHelperPatch.Apply(harmony);
-            harmony.PatchAll();
+            EncyclopediaTraitItemVMPatch.Apply(harmony);
 
-            var uiExtender = new UIExtender(Namespace);
+            var uiExtender = UIExtender.Create(Namespace);
             uiExtender.Register(typeof(SubModule).Assembly);
             uiExtender.Enable();
 

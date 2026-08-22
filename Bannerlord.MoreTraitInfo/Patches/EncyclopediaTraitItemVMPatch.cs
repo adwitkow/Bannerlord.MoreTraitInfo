@@ -1,4 +1,5 @@
 ﻿using HarmonyLib;
+using HarmonyLib.PatchBuilder;
 using System.Collections.Generic;
 using TaleWorlds.CampaignSystem;
 using TaleWorlds.CampaignSystem.CharacterDevelopment;
@@ -11,12 +12,18 @@ using TaleWorlds.Localization;
 
 namespace Bannerlord.MoreTraitInfo.Patches
 {
-    [HarmonyPatch(typeof(EncyclopediaTraitItemVM), MethodType.Constructor, typeof(TraitObject), typeof(Hero))]
     public static class EncyclopediaTraitItemVMPatch
     {
         private static readonly TextObject NeutralTextObject = new TextObject("{=3PzgpFGq}Neutral");
 
-        private static void Postfix(ref EncyclopediaTraitItemVM __instance, TraitObject traitObj, Hero hero)
+        public static void Apply(Harmony harmony)
+        {
+            harmony.Patch<EncyclopediaTraitItemVM>()
+                .Constructor([typeof(TraitObject), typeof(Hero)])
+                    .Postfix(ConstructorPostfix);
+        }
+
+        private static void ConstructorPostfix(ref EncyclopediaTraitItemVM __instance, TraitObject traitObj, Hero hero)
         {
             if (hero != Hero.MainHero)
             {
