@@ -1,10 +1,7 @@
-﻿using HarmonyLib;
+﻿#if LOWER_THAN_1_5
+using HarmonyLib;
 using HarmonyLib.PatchBuilder;
-#if LOWER_THAN_1_5
 using System.Text;
-#else
-using System.Collections.Generic;
-#endif
 using TaleWorlds.CampaignSystem;
 using TaleWorlds.CampaignSystem.CharacterDevelopment;
 using TaleWorlds.CampaignSystem.ViewModelCollection;
@@ -42,7 +39,6 @@ namespace Bannerlord.MoreTraitInfo.Patches
 
             var currentTier = traitValue + MathF.Abs(traitObj.MinValue);
 
-#if LOWER_THAN_1_5
             var builder = new StringBuilder();
             builder.AppendLine();
 
@@ -69,55 +65,6 @@ namespace Bannerlord.MoreTraitInfo.Patches
 
             var traitTooltipText = CampaignUIHelper.GetTraitTooltipText(traitObj, traitValue);
             __instance.Hint = new HintViewModel(new TextObject("{=!}" + traitTooltipText + builder.ToString()));
-#else
-            var traitXpProperties = new List<TooltipProperty>();
-            if (traitValue > -2)
-            {
-                var lowerLevel = GetTraitLevelName(traitObj, currentTier - 1);
-                var requiredXp = characterDevelopmentModel.GetTraitXpRequiredForTraitLevel(traitObj, traitValue - 1);
-
-                traitXpProperties.Add(new(
-                    $"{lowerLevel} ({traitName} {traitValue - 1})",
-                    $"{currentXp}/{requiredXp}",
-                    0));
-            }
-            
-            if (traitValue < 2)
-            {
-                var higherLevel = GetTraitLevelName(traitObj, currentTier + 1);
-                var requiredXp = characterDevelopmentModel.GetTraitXpRequiredForTraitLevel(traitObj, traitValue + 1);
-
-                var requiredXpLine = GetRequiredXpLine(traitName, higherLevel, traitValue + 1, currentXp, requiredXp);
-                traitXpProperties.Add(new(
-                    $"{higherLevel} ({traitName} {traitValue + 1})",
-                    $"{currentXp}/{requiredXp}",
-                    0));
-            }
-
-            if (traitXpProperties.Count > 0)
-            {
-                traitXpProperties.InsertRange(0,
-                    [
-                        new(
-                            string.Empty,
-                            string.Empty,
-                            0,
-                            false,
-                            TooltipProperty.TooltipPropertyFlags.None),
-                        new(
-                            string.Empty,
-                            string.Empty,
-                            0,
-                            false,
-                            TooltipProperty.TooltipPropertyFlags.RundownSeperator)
-                    ]);
-            }
-
-            var allTooltipProperties = CampaignUIHelper.GetTraitEffectTooltip(traitObj, traitValue);
-            allTooltipProperties.AddRange(traitXpProperties);
-
-            __instance.Hint = new BasicTooltipViewModel(() => allTooltipProperties);
-#endif
         }
 
         private static TextObject GetTraitLevelName(TraitObject trait, int tier)
@@ -136,3 +83,4 @@ namespace Bannerlord.MoreTraitInfo.Patches
         }
     }
 }
+#endif
