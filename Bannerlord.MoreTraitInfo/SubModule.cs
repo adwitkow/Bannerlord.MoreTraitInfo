@@ -13,6 +13,7 @@ namespace Bannerlord.MoreTraitInfo
         {
             var harmony = new Harmony(Namespace);
 
+            EncyclopediaHeroTraitVisualWidgetPatch.Apply(harmony);
             TraitLevelingHelperPatch.Apply(harmony);
             EncyclopediaTraitItemVMPatch.Apply(harmony);
 

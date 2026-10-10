@@ -2,6 +2,7 @@
 using Bannerlord.UIExtenderEx.ViewModels;
 using TaleWorlds.CampaignSystem;
 using TaleWorlds.CampaignSystem.ViewModelCollection;
+using TaleWorlds.CampaignSystem.ViewModelCollection.Encyclopedia.Items;
 using TaleWorlds.CampaignSystem.ViewModelCollection.Encyclopedia.Pages;
 using TaleWorlds.Core.ViewModelCollection.Generic;
 using TaleWorlds.Library;
@@ -40,12 +41,15 @@ namespace Bannerlord.MoreTraitInfo.Mixins
                 return;
             }
 
+            ViewModel.Traits.Clear();
+
             foreach (var trait in CampaignUIHelper.GetHeroTraits())
             {
                 var xp = Campaign.Current.PlayerTraitDeveloper.GetPropertyValue(trait);
                 var pair = new StringPairItemVM($"{trait.Name}:", xp.ToString());
 
                 TraitXpInfo.Add(pair);
+                ViewModel.Traits.Add(new EncyclopediaTraitItemVM(trait, _hero));
             }
 
             base.OnRefresh();
