@@ -70,7 +70,10 @@ namespace Bannerlord.MoreTraitInfo.Patches
             }
 
             var rawValue = MathF.Abs(xpValue);
-            var message = new InformationMessage($"{Context}: {sign}{rawValue} {trait.Name}", color);
+            var prefix = string.IsNullOrEmpty(Context)
+                ? string.Empty
+                : $"{Context}: ";
+            var message = new InformationMessage($"{prefix}{sign}{rawValue} {trait.Name}", color);
 
             InformationManager.DisplayMessage(message);
         }
